@@ -1,26 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
-import { Button } from 'antd';
+import {HashRouter, Switch, Route, Redirect} from 'react-router-dom';
 import './App.css';
+import Index from "./pages/Layout";
+import Login from "./pages/Login";
+import LoadableComponent from './utils/LoadableComponent';
+
+const Home = LoadableComponent(() => import('./pages/Home'));
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <Button type="primary">Button</Button>
-      </header>
+      <HashRouter>
+        <Switch>
+          <Route path="/login" component={Login}/>
+          {/*<Route path="/" component={Index}/>*/}
+          <Route path="/" render={() =>
+            <Index>
+              <Switch>
+                <Route exact path='/home' component={Home}/>
+                <Route exact path='/home/nav1/option1' component={Login}/>
+                <Route exact path='/home/nav1/option2' component={Login}/>
+                <Redirect exact from='/' to='/home'/>
+              </Switch>
+            </Index>
+          }/>
+        </Switch>
+      </HashRouter>
     </div>
   );
 }
