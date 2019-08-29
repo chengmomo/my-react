@@ -9,12 +9,12 @@ const menus = [
     key: '/home'
   },
   {
-    title: 'Nav1',
+    title: 'Ant 基本组件',
     icon: 'user',
-    key: '/home/nav1',
+    key: '/home/ant',
     subs: [
-      {title: 'option1', icon: '', key: '/home/nav1/option1'},
-      {title: 'option2', icon: '', key: '/home/nav1/option2'}
+      {title: 'Form', icon: '', key: '/home/ant/form'},
+      {title: 'Table', icon: '', key: '/home/ant/table'}
     ]
   },
   {
@@ -24,8 +24,8 @@ const menus = [
     subs: [
       {title: 'option3', icon: '', key: '/home/nav2/option3'},
       {
-        title: 'Submenu',
-        icon: '',
+        title: '图表',
+        icon: 'bar-chart',
         key: '/home/nav2/submenu',
         subs: [
           {title: 'option4', icon: '', key: '/home/nav2/submenu/option4'},
@@ -35,6 +35,7 @@ const menus = [
       }]
   }]
 
+//withRouter一定要写在前面，不然路由变化不会反映到props中去
 @withRouter
 class SiderNav extends React.Component {
   constructor(props) {
@@ -72,7 +73,17 @@ class SiderNav extends React.Component {
       default:
         break;
     }
+  }
 
+  componentWillReceiveProps(nextProps) {
+    //当点击面包屑导航时，侧边栏要同步响应
+    const {value: oldValue} = this.props;
+    const pathname = nextProps.location.pathname
+    if (this.props.location.pathname !== pathname) {
+      this.setState({
+        selectedKeys: [pathname],
+      })
+    }
   }
 
   onOpenChange = (openKeys) => {
