@@ -1,7 +1,7 @@
 {
   "name": "my-react",
   "version": "0.1.0",
-  "homepage": "https://chengmomo.github.io/my-react",
+  "homepage": "./",
   "private": true,
   "devDependencies": {
     "gh-pages": "^2.1.1"
