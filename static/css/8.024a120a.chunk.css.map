@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.css"],"names":[],"mappings":"AAAA,cACI,mBAAoB,CACpB,eAAgB,CAChB,sBAAuB,CAEvB,2BACJ","file":"8.024a120a.chunk.css","sourcesContent":[".lineEllipsis {\r\n    display: -webkit-box;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    /* autoprefixer: ignore next */\r\n    -webkit-box-orient: vertical;\r\n}"]}
