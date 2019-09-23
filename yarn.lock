@@ -2835,6 +2835,11 @@ cosmiconfig@^5.0.0, cosmiconfig@^5.2.0, cosmiconfig@^5.2.1:
     js-yaml "^3.13.1"
     parse-json "^4.0.0"
 
+countup.js@^1.9.3:
+  version "1.9.3"
+  resolved "https://registry.yarnpkg.com/countup.js/-/countup.js-1.9.3.tgz#ce3e50cd7160441e478f07da31895edcc0f1c9dd"
+  integrity sha1-zj5QzXFgRB5HjwfaMYle3MDxyd0=
+
 create-ecdh@^4.0.0:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/create-ecdh/-/create-ecdh-4.0.3.tgz#c9111b6f33045c4697f144787f9254cdc77c45ff"
@@ -4716,6 +4721,11 @@ hex-color-regex@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/hex-color-regex/-/hex-color-regex-1.1.0.tgz#4c06fccb4602fe2602b3c93df82d7e7dbf1a8a8e"
   integrity sha512-l9sfDFsuqtOqKDsQdqrMRk0U85RZc0RtOR9yPI7mRVOa4FsR/BVnZ0shmQRM96Ji99kYZP/7hn1cedc1+ApsTQ==
+
+highcharts@^7.2.0:
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/highcharts/-/highcharts-7.2.0.tgz#d6bd00240767cfab67210ead47c6cd015384e74d"
+  integrity sha512-jOlMzj3oRuqNBoJg+rqHZI9vnlLHipwVfceJr00gAreXu8268UwahEh7yBGI/m1wa6Uc/XoBMIuzMpXUFMvFdg==
 
 history@^4.9.0:
   version "4.9.0"
@@ -8852,6 +8862,15 @@ react-app-polyfill@^1.0.2:
     raf "3.4.1"
     regenerator-runtime "0.13.3"
     whatwg-fetch "3.0.0"
+
+react-countup@^4.2.2:
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/react-countup/-/react-countup-4.2.2.tgz#b98c1bf4a311411548000373b15f5c9b8d3cd6ac"
+  integrity sha512-6mTJiXDt/x/K5odlKL2mAbQLYQLT9PyqmLcmLO6iCxeGy8yfcaRZTKw9BuzCR6qSHNsR6uzLAyJh6kjf0HvhcQ==
+  dependencies:
+    countup.js "^1.9.3"
+    prop-types "^15.6.2"
+    warning "^4.0.2"
 
 react-dev-utils@^9.0.3:
   version "9.0.3"

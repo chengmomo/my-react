@@ -1,18 +1,49 @@
 import React from 'react';
-import {Icon, Menu, Avatar, Row, Col, Dropdown} from 'antd';
+import {Drawer, Icon, Menu, Avatar, Row, Col, Dropdown, Modal} from 'antd';
 import {inject} from 'mobx-react';
 import {withRouter} from 'react-router-dom';
 import '../style.css'
 
 @withRouter @inject('appStore')
 class HeaderBar extends React.Component {
+  state = {visible: false};
   toggle = () => {
     this.props.onToggle()
   }
+
   logout = () => {
     this.props.appStore.toggleLogin(false)
-    this.props.history.push(this.props.location.pathname)
+    this.props.history.push("/login")
   }
+
+  showConfirm = () => {
+    let that = this
+    Modal.confirm({
+      title: '确定退出该应用?',
+      // content: 'Some descriptions',
+      okText: '确定',
+      okType: 'danger',
+      cancelText: '取消',
+      onOk() {
+        that.logout()
+      },
+      onCancel() {
+        // console.log('Cancel');
+      },
+    });
+  };
+
+  showDrawer = () => {
+    this.setState({
+      visible: true,
+    });
+  };
+
+  onClose = () => {
+    this.setState({
+      visible: false,
+    });
+  };
 
   render() {
     const {collapsed, appStore} = this.props
@@ -21,12 +52,24 @@ class HeaderBar extends React.Component {
         <Menu.ItemGroup title='用户中心' className='menu-group'>
           <Menu.Item>你好</Menu.Item>
           <Menu.Item>个人信息</Menu.Item>
-          <Menu.Item><span onClick={this.logout}>退出登录</span></Menu.Item>
+          <Menu.Item><span onClick={this.showConfirm}>退出登录</span></Menu.Item>
         </Menu.ItemGroup>
         <Menu.ItemGroup title='设置中心' className='menu-group'>
-          <Menu.Item>设置</Menu.Item>
+          <Menu.Item><span onClick={this.showDrawer}>设置</span></Menu.Item>
         </Menu.ItemGroup>
       </Menu>
+    )
+    const drawer = (
+      <Drawer
+        title="Basic Drawer"
+        placement="right"
+        onClose={this.onClose}
+        visible={this.state.visible}
+      >
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+      </Drawer>
     )
     return (
       <div>
@@ -54,7 +97,7 @@ class HeaderBar extends React.Component {
             </Dropdown>
           </Col>
         </Row>
-
+        {drawer}
       </div>
     )
   }

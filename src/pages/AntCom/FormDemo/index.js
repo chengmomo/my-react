@@ -362,6 +362,7 @@ class FormDemo extends React.Component {
           {/*<Col span={12}>*/}
           {/*</Col>*/}
         </Row>
+        {/*使用HashRouter点击Anchor页面会跳转*/}
         <Affix style={styles.affixBox}>
           <Anchor offsetTop={80} affix={true}>
             <Anchor.Link href="#login" title="login demo"/>

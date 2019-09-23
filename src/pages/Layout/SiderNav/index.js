@@ -14,25 +14,25 @@ const menus = [
     key: '/home/ant',
     subs: [
       {title: 'Form', icon: '', key: '/home/ant/form'},
-      {title: 'Table', icon: '', key: '/home/ant/table'}
+      {title: 'Table', icon: '', key: '/home/ant/table'},
+      {title: 'Page', icon: '', key: '/home/ant/page'}
     ]
   },
   {
-    title: 'Nav2',
+    title: '常用插件',
     icon: 'mail',
-    key: '/home/nav2',
+    key: '/home/components',
     subs: [
-      {title: 'option3', icon: '', key: '/home/nav2/option3'},
       {
         title: '图表',
         icon: 'bar-chart',
-        key: '/home/nav2/submenu',
+        key: '/home/components/submenu',
         subs: [
-          {title: 'option4', icon: '', key: '/home/nav2/submenu/option4'},
-          {title: 'option5', icon: '', key: '/home/nav2/submenu/option5'},
-          {title: 'option6', icon: '', key: '/home/nav2/submenu/option6'}
+          {title: 'highcharts', icon: '', key: '/home/components/submenu/highcharts'},
+          {title: 'option2', icon: '', key: '/home/components/submenu/option2'},
         ]
-      }]
+      },
+      {title: 'option3', icon: '', key: '/home/components/option3'}]
   }]
 
 //withRouter一定要写在前面，不然路由变化不会反映到props中去
@@ -77,7 +77,7 @@ class SiderNav extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     //当点击面包屑导航时，侧边栏要同步响应
-    const {value: oldValue} = this.props;
+    // const {value: oldValue} = this.props;
     const pathname = nextProps.location.pathname
     if (this.props.location.pathname !== pathname) {
       this.setState({
@@ -87,7 +87,6 @@ class SiderNav extends React.Component {
   }
 
   onOpenChange = (openKeys) => {
-    console.log(openKeys)
     if (openKeys.length === 0 || openKeys.length === 1) {
       this.setState({
         openKeys
